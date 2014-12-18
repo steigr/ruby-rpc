@@ -19,7 +19,7 @@ module Ruby
         require 'ruby/rpc/patch' if Object.const_defined? 'Ruby::RPC::CLIENT'
       end
       def class_factory name
-        Object.const_set(name,OpenStruct.new() { include Ruby::RPC::DeferCalls; extend Ruby::RPC::DeferCalls })
+        Object.const_set(name,Class.new(OpenStruct) { include Ruby::RPC::DeferCalls; extend Ruby::RPC::DeferCalls })
       end
     end
   end
